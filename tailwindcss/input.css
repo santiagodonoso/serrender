@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .fadein{
+    animation:fadein .5s;
+} */
+.spa_show{
+	animation: fadein .5s;
+	display: grid;
+}
+.spa_hide{
+	display: none;
+}
+@keyframes fadein {
+	from { opacity:0; }
+	to { opacity:1; }
+} 
+
+
+
+@layer{
+	.user{
+		@apply flex items-center justify-center w-full h-20 text-white bg-slate-700
+	}
+}

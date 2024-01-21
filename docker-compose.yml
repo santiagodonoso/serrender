@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+  python:
+    # Shows the output from print() in the terminal
+    environment:
+      - PYTHONUNBUFFERED=1    
+    container_name: python_3.10.5_serrender
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - C:\web\serrender:/app
+    networks:
+      - serrender_network
+
+  # arangodb:
+  #   image: arangodb:3.11.3
+  #   container_name: arango_3.11.3_container
+  #   restart: always
+  #   ports:
+  #     - 8529:8529
+  #   environment:
+  #     - ARANGO_NO_AUTH=1
+  #   volumes:
+  #     - C:\web\serrender\arangodb:/var/lib/arangodb3
+  #   networks:
+  #     - serrender_network
+
+networks:
+  serrender_network:

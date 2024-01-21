@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
+    <script src="/serrender.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="flex flex-col gap-4 p-4">
+
+        <div id="ok"></div>
+
+        <div id="users" class="flex flex-col gap-4">        
+            <div class="user">
+                One
+            </div>
+            <div class="user">
+                Two
+            </div>        
+        </div>
+        <button type="submit" id="btn_more" 
+        onclick="serrender()"
+        data-srMethod = "get" 
+        data-srUrl = "/users"       
+        class="flex items-center justify-center w-full h-12 text-slate-100 bg-slate-900"
+        >
+            more
+        </button>
+    </div>
+
+    <div id="test">
+        Test me
+    </div>
+
+</body>
+</html>
