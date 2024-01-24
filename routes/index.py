@@ -2,12 +2,14 @@ from bottle import get, template
 from icecream import ic
 import json
 import x
+import uuid
 
 ##############################
 @get("/")
 def _():
     try:
-        return template("index.html")
+        id = uuid.uuid4().hex
+        return template("index.html", id=id)
     except Exception as ex:        
         print(ex)
     finally:

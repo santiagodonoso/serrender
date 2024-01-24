@@ -5,6 +5,7 @@ from bottle import default_app, error, get, post, request, response, static_file
 import git
 from icecream import ic
 import json
+import uuid
 
 
 ##############################
@@ -30,9 +31,9 @@ def _():
     return static_file("app.css", ".")
 
 ##############################
-@get("/serrender.js")
+@get("/x.js")
 def _():
-    return static_file("serrender.js", "./js")
+    return static_file("x.js", "./js")
 
 ##############################
 @get("/spa.js")
@@ -49,22 +50,70 @@ def _(error):
 @get("/users")
 def _():
     users = [{"name":"Tree"}, {"name":"Four"}]
-    html =  """<template class = 'serrender' 
-                        data-srTarget = '#users' 
-                        data-srPosition = 'beforeend' 
-                        data-srTitle = 'New'
-                        data-srSpa = '/test' 
+    html =  """<template class = 'x' 
+                        data-xTarget = '#users' 
+                        data-xPosition = 'beforeend' 
+                        data-xTitle = 'New'
+                        data-xSpa = '/test' 
                 >"""
     for user in users:
        html += f"<div class='user'>{user['name']}</div>"
     html += "</template>"
-    html += "<template class='serrender' data-srTarget='#test'><div id='test'>WOW</div></template>"      
-    html += "<template class='serrender' data-srTarget='#ok'><div id='ok'>User created</div></template>"      
+    html += "<template class='x' data-xTarget='#test'><div id='test'>WOW</div></template>"      
+    html += "<template class='x' data-xTarget='#ok'><div id='ok'>User created</div></template>"      
+    return html
+
+
+##############################
+@get("/items/page/<id>")
+def _(id):
+    # id = uuid.uuid4().hex
+    next = int(id) + 2
+    next_next = int(id) + 3
+    items = [{"name":next}, {"name":next_next}]
+
+    html =  f"""<template class = 'x' 
+                        data-xTarget = '#items' 
+                        data-xPosition = 'beforeend' 
+                        data-xTitle = 'Page {id}'
+                        data-xNewUrl = '/page/{id}' 
+                >"""
+    for item in items:
+       html += f"<div class='item x{{id}}'>{item['name']}</div>"
+    html += "</template>"
+
+    html += f"""<template class='x' data-xTarget='#btn_more'
+                >
+                    <button type="submit" id="btn_more" 
+                    onclick="x()"
+                    data-xMethod = "get" 
+                    data-xNewUrl = "/items/page/{next}"       
+                    class="flex items-center justify-center w-full h-12 text-slate-100 bg-slate-900"
+                    >
+                        page {next}
+                    </button>
+                </template>"""
     return html
 
 ##############################
+@get("/items/<id>")
+def _(id):
+   item = template("_item.html", id=id)
+   html =   f"""
+            <template 
+            data-xTarget = "#more_info"
+            data-xPosition = "beforeend"
+            data-xNewUrl = "/items/{id}"         
+            >
+                {item}
+            </template>
+            """
+   return html
+
+
+##############################
 import routes.index
-import routes.item
+# import routes.item
 
 
 ##############################

@@ -4,36 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app.css">
-    <script src="/serrender.js" defer></script>
+    <script src="/x.js" defer></script>
     <title>Document</title>
 </head>
 <body>
     
-    <div class="flex flex-col gap-4 p-4">
+    <div class="grid grid-cols-2">
 
-        <div id="ok"></div>
+        <div class="" data-xOnUrl="/">
+            <div class="x{{id}} flex flex-col gap-4 p-4">
 
-        <div id="users" class="flex flex-col gap-4">        
-            <div class="user">
-                One
+                <div id="ok"></div>
+        
+                <div id="items" class="flex flex-col gap-4">        
+                    <div class="user" 
+                    onclick="x()" 
+                    data-xMethod = "get"
+                    data-xUrl = "/items/1"
+                    >
+                        One
+                    </div>
+                    <div class="user" 
+                    onclick="x()"
+                    data-xMethod = "get"
+                    data-xUrl = "/items/2"    
+                    >
+                        Two
+                    </div>        
+                </div>
+                <a href="/items/page/1" type="submit" id="btn_more" 
+                onclick="x(); return false"
+                data-xMethod = "get" 
+                data-xUrl = "/items/page/1"       
+                class="flex items-center justify-center w-full h-12 text-slate-100 bg-slate-900"
+                >
+                    more
+                </a>
             </div>
-            <div class="user">
-                Two
-            </div>        
         </div>
-        <button type="submit" id="btn_more" 
-        onclick="serrender()"
-        data-srMethod = "get" 
-        data-srUrl = "/users"       
-        class="flex items-center justify-center w-full h-12 text-slate-100 bg-slate-900"
+        <!-- end colum left -->
+
+        <div id="more_info" class="" 
+        data-xOnUrl = "/"
+        data-xShow = ""
+        data-xHide = ""
         >
-            more
-        </button>
+
+        </div>
+        <!-- end column right -->
+
     </div>
 
-    <div id="test">
-        Test me
-    </div>
+
+
+    <script>
+        const xId = '{{id}}'
+    </script>
 
 </body>
 </html>
