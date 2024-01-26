@@ -113,6 +113,7 @@ def _(id):
 
 ##############################
 import routes.index
+import routes.about_us
 # import routes.item
 
 

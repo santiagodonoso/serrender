@@ -9,7 +9,14 @@
 </head>
 <body>
     
-    <div class="grid grid-cols-2">
+    % include("_nav.html")
+
+    <div id="index" class="xpage grid grid-cols-2"
+    data-xId = "index"
+    data-xOnUrl = "/"
+    data-xHide = ".xpage"
+    data-xShow = "#index"
+    >
 
         <div class="" data-xOnUrl="/">
             <div class="x{{id}} flex flex-col gap-4 p-4">

@@ -31,7 +31,7 @@ async function x(entry=false){
     if( ! methods_allowed.includes(method) ){
         console.log(`error : x() method '${method}' not allowed`); return
     }
-    // console.log(`ok : x() method to fetch data is ${method}`)
+    console.log(`ok : x() method to fetch data is ${method}`)
 
 
 
@@ -40,13 +40,13 @@ async function x(entry=false){
         method : method
     })
     const res = await conn.text()
-    // console.log(`inserting res in the dom`)
+    console.log(`inserting res in the dom`)
     document.querySelector("body").insertAdjacentHTML('beforeend', res)
 
     let actual_html = ""
     let new_url = false
     document.querySelectorAll('template[data-xTarget]').forEach(template => {
-        // console.log("template", template)  
+        console.log("template", template)  
 
         if( template.dataset.xnewurl && new_url == false ){
             new_url = template.dataset.xnewurl
@@ -55,12 +55,12 @@ async function x(entry=false){
 
         const target = template.dataset.xtarget
         if( ! target ){console.log(`error : x() xTarget missing`); return}    
-        // console.log(`ok : x() the response data will affect '${target}'`)
+        console.log(`ok : x() the response data will affect '${target}'`)
         if(! document.querySelector(target) ){console.log(`error : x() xTarget is not in the dom`); return}   
 
-        const position = template.dataset.xposition || "replace"
-        // console.log(`ok : x() position is '${position}'`)
-        if( ! ["replace", "beforebegin", "afterbegin", "beforeend", "afterend"].includes(position) ){
+        const position = template.dataset.xposition || "innerHTML" // default
+        console.log(`ok : x() position is '${position}'`)
+        if( ! ["innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"].includes(position) ){
             console.log(`error : x() xPosition '${position}' is not valid`); return
         }
 
@@ -72,10 +72,14 @@ async function x(entry=false){
         actual_html += `<template class="x" data-xTarget="${target}">${temp_html}</template>`
 
 
-        if(position == "replace"){            
+        if(position == "innerHTML"){            
+            document.querySelector(target).innerHTML = template.innerHTML
+        }
+        else if(position == "replace"){
             document.querySelector(target).insertAdjacentHTML("afterend", template.innerHTML)
-            document.querySelector(target).remove()
-        }else{
+            document.querySelector(target).remove()            
+        }
+        else{
             document.querySelector(target).insertAdjacentHTML(position, template.innerHTML)
         }
 
@@ -109,13 +113,16 @@ async function x(entry=false){
 function xonurl(xurl){
     cl(`xonurl(xurl): ${xurl}`)
     document.querySelectorAll(`[data-xonurl='${xurl}']`).forEach( el => {
+        cl(el)
         if(el.dataset.xhide){
             document.querySelectorAll(el.dataset.xhide).forEach( i => {
+                console.log("hiding:", i)
                 i.classList.add("hidden")
             })
         }
         if(el.dataset.xshow){
             document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
+                cl(i)
                 i.classList.remove("hidden")
             })
         }            
