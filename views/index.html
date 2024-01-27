@@ -5,58 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app.css">
     <script src="/x.js" defer></script>
-    <title>Document</title>
+    <title>
+       mix html
+    </title>
 </head>
-<body>
+<body class="w-full h-screen bg-slate-200">
     
     % include("_nav.html")
 
-    <div id="index" class="xpage grid grid-cols-2"
+    <div id="index" class="xpage w-full h-full grid grid-cols-2"
     data-xId = "index"
     data-xOnUrl = "/"
+    data-xTitle = "mix html"
     data-xHide = ".xpage"
     data-xShow = "#index"
     >
 
-        <div class="" data-xOnUrl="/">
-            <div class="x{{id}} flex flex-col gap-4 p-4">
+        <div class="">
+            <div class="flex flex-col gap-4 p-4">
 
-                <div id="ok"></div>
-        
-                <div id="items" class="flex flex-col gap-4">        
-                    <div class="user" 
-                    onclick="x()" 
-                    data-xMethod = "get"
-                    data-xUrl = "/items/1"
-                    >
-                        One
-                    </div>
-                    <div class="user" 
-                    onclick="x()"
-                    data-xMethod = "get"
-                    data-xUrl = "/items/2"    
-                    >
-                        Two
-                    </div>        
-                </div>
-                <a href="/items/page/1" type="submit" id="btn_more" 
-                onclick="x(); return false"
-                data-xMethod = "get" 
-                data-xUrl = "/items/page/1"       
-                class="flex items-center justify-center w-full h-12 text-slate-100 bg-slate-900"
-                >
-                    more
-                </a>
+                % for item in items:
+                    % include("_item.html")
+                % end
+
             </div>
         </div>
         <!-- end colum left -->
 
-        <div id="more_info" class="" 
-        data-xOnUrl = "/"
-        data-xShow = ""
-        data-xHide = ""
-        >
-
+        <div id="more_info" class="h-full bg-slate-100">
+            <main class=""
+            data-xClass="item"
+            data-xTitle = "mixHtml"
+            data-xOnUrl = "/"
+            data-xHide = "[data-xClass='item']"
+            data-xShow = "[data-xId = '/item_0']"
+            data-xId = "/item_0"    
+            >
+                <h1 class="pt-2 text-center text-2xl font-bold">
+                    Best HTML Invention
+                </h1>
+            </main> 
         </div>
         <!-- end column right -->
 

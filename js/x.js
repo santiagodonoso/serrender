@@ -64,9 +64,9 @@ async function x(entry=false){
             console.log(`error : x() xPosition '${position}' is not valid`); return
         }
 
-        const title = template.dataset.xtitle || false
-        // console.log(`ok : x() the xTitle is '${title}'`)
-        if(title){ document.title = title}          
+        // const title = template.dataset.xtitle || false
+        // // console.log(`ok : x() the xTitle is '${title}'`)
+        // if(title){ document.title = title}          
 
         const temp_html = document.querySelector(target).outerHTML
         actual_html += `<template class="x" data-xTarget="${target}">${temp_html}</template>`
@@ -114,6 +114,10 @@ function xonurl(xurl){
     cl(`xonurl(xurl): ${xurl}`)
     document.querySelectorAll(`[data-xonurl='${xurl}']`).forEach( el => {
         cl(el)
+        const title = el.dataset.xtitle || false
+        // console.log(`ok : x() the xTitle is '${title}'`)
+        if(title){ document.title = title}   
+
         if(el.dataset.xhide){
             document.querySelectorAll(el.dataset.xhide).forEach( i => {
                 console.log("hiding:", i)
@@ -121,7 +125,8 @@ function xonurl(xurl){
             })
         }
         if(el.dataset.xshow){
-            document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
+            // document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
+            document.querySelectorAll(el.dataset.xshow).forEach( i => {
                 cl(i)
                 i.classList.remove("hidden")
             })

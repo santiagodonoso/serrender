@@ -1,0 +1,19 @@
+<template
+data-xTarget = "#more_info"
+data-xPosition = "beforeend"
+data-xTitle = "{{id}}"
+data-xNewUrl = "/items/{{id}}" 
+>
+
+    <main class=""
+    data-xClass="item"
+    data-xOnUrl = "/items/{{id}}"
+    data-xTitle = "{{id}}"
+    data-xHide = "[data-xClass='item']"
+    data-xShow = "[data-xId = '/items/{{id}}']"
+    data-xId = "/items/{{id}}"    
+    >
+        Item {{id}}
+    </main>
+
+</template>

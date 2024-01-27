@@ -1,0 +1,22 @@
+URL
+data-xMethod = "get"
+data-xUrl = "/about-us"
+onclick="x(); return false"
+
+
+TEMPLATE
+data-xTarget = ""           
+data-xPosition = ""     default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
+data-xNewUrl = "" 
+
+
+
+PAGE
+data-xTitle = ""
+data-xClass= ""
+data-xOnUrl = ""
+data-xHide = ""
+data-xShow = ""
+data-xId = ""
+
+

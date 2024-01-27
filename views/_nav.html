@@ -1,19 +1,26 @@
-<nav>
-    <a href="/"
-    onclick="x(); return false"
-    >
-        Home
-    </a>
-    <a href="/about-us"
+<nav class="flex items-center bg-slate-800 h-12 text-slate-200 px-4">
+    <a href="/" class="text-xl text-pink-400 font-bold"
     data-xMethod = "get"
-    data-xUrl = "/about-us"
+    data-xUrl = "/"
     onclick="x(); return false"
     >
+        mix html
+    </a>
+
+    <div class="flex gap-4 ml-auto">
+        <a href="/about-us"
+        data-xMethod = "get"
+        data-xUrl = "/about-us"
+        onclick="x(); return false"
+        >
         About us
-    </a>
-    <a href="/contact-us"
-    onclick="x(); return false"
-    >
+        </a>
+
+        <a href="/contact-us"
+        onclick="x(); return false"
+        >
         Contact us
-    </a>
+        </a>
+    </div>
+
 </nav>

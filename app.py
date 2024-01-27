@@ -98,17 +98,17 @@ def _(id):
 ##############################
 @get("/items/<id>")
 def _(id):
-   item = template("_item.html", id=id)
-   html =   f"""
-            <template 
-            data-xTarget = "#more_info"
-            data-xPosition = "beforeend"
-            data-xNewUrl = "/items/{id}"         
-            >
-                {item}
-            </template>
-            """
-   return html
+   item = template("item.html", id=id)
+#    html =   f"""
+#             <template 
+#             data-xTarget = "#more_info"
+#             data-xPosition = "beforeend"
+#             data-xNewUrl = "/items/{id}"         
+#             >
+#                 {item}
+#             </template>
+#             """
+   return item
 
 
 ##############################

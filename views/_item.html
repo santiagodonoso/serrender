@@ -1,9 +1,10 @@
-<div class="item"
-data-xOnUrl = "/items/{{id}}"
-data-xHide = ".item"
-data-xShow = "/items/{{id}}"
+<a href="/items/{{item['id']}}"
+class="flex items-center justify-center h-24 border border-slate-100 text-2xl bg-slate-400 rounded-sm"
+onclick="x(); return false" 
+data-xMethod = "get"
+data-xUrl = "/items/{{item['id']}}"
 >
 
-    Item {{id}}
+    {{item["name"]}}
 
-</div>
+</a>
