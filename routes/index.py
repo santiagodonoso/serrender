@@ -12,6 +12,7 @@ def _():
             {"id":1, "name":"one"},
             {"id":2, "name":"two"},
             {"id":3, "name":"three"},
+            {"id":4, "name":"four"},
         ]
         return template("index.html", items=items)
     except Exception as ex:        

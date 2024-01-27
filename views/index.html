@@ -9,11 +9,11 @@
        mix html
     </title>
 </head>
-<body class="w-full h-screen bg-slate-200">
+<body class="w-full h-screen text-gray-900 bg-gray-100 overflow-hidden">
     
     % include("_nav.html")
 
-    <div id="index" class="xpage w-full h-full grid grid-cols-2"
+    <div id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid grid-cols-2"
     data-xId = "index"
     data-xOnUrl = "/"
     data-xTitle = "mix html"
@@ -21,32 +21,73 @@
     data-xShow = "#index"
     >
 
-        <div class="">
-            <div class="flex flex-col gap-4 p-4">
+        <div class="flex flex-col gap-4 p-4 overflow-y-scroll">
+            <div id="items" class="grid grid-cols-2 gap-4">
 
                 % for item in items:
                     % include("_item.html")
                 % end
 
             </div>
+
+            % include("__btn_show_more.html", id=5)         
         </div>
         <!-- end colum left -->
 
-        <div id="more_info" class="h-full bg-slate-100">
-            <main class=""
+        <div id="more_info" class="h-full border border-l-gray-200 p-4 overflow-y-scroll">
+            <main class="flex flex-col gap-4"
             data-xClass="item"
-            data-xTitle = "mixHtml"
+            data-xTitle = "mix html"
             data-xOnUrl = "/"
             data-xHide = "[data-xClass='item']"
             data-xShow = "[data-xId = '/item_0']"
             data-xId = "/item_0"    
             >
-                <h1 class="pt-2 text-center text-2xl font-bold">
-                    Best HTML Invention
-                </h1>
+                <div class="flex flex-col items-center justify-center text-orange-100 bg-orange-400">
+                    <h1 class="pt-2 text-center text-5xl font-bold">
+                        mix html
+                    </h1>
+                    <p class="">
+                        the best JavaScript library for single page apps
+                    </p>
+                </div>
+                <div class="bg-gray-100">
+                    <p class="font-bold">
+                        Explain it ?
+                    </p>
+                    <p class="">
+                        It is simple, you just have to know a few attributes and you will get
+                        a single page app. No need to write JavaScript, just plain HTML.
+                    </p>
+                </div>   
+                <div class="bg-gray-100">
+                    <p class="font-bold">
+                        Quick overview
+                    </p>
+                    <p class="">
+                        This page is built with <span class="text-purple-600">mixhtml</span>. It is a
+                        complete single page app with server side rendering, searh engine optimized (SEO) and does not use any
+                        fancy over-complicated framework, nor does it use Nodejs. This library can be
+                        used with any back-end language out of the box.
+                    </p>
+                </div>    
+                <div class="bg-gray-100">
+                    <p class="font-bold text-red-600">
+                        Live Demo
+                    </p>
+                    <p class="">
+                        On the left site of this page, you will see boxes with numbers. Imagine each
+                        box is an item, property, product, user, etc. You would like to get a quick
+                        overview of that item and also you may want to copy the link and send it to a friend.
+                        Click on any box and you will see how the single page app loads the respective data,
+                        sets the title of the page, and also changes the URL. Amazing! All done with just HTML.
+                        And yes, you can navigate the page by clicking on the back or forward buttons as well.
+                    </p>
+                </div>                                           
             </main> 
         </div>
         <!-- end column right -->
+
 
     </div>
 

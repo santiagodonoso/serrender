@@ -47,20 +47,28 @@ def _(error):
    return template("404", is_spa=is_spa)
 
 ##############################
-@get("/users")
-def _():
-    users = [{"name":"Tree"}, {"name":"Four"}]
-    html =  """<template class = 'x' 
-                        data-xTarget = '#users' 
-                        data-xPosition = 'beforeend' 
-                        data-xTitle = 'New'
-                        data-xSpa = '/test' 
-                >"""
-    for user in users:
-       html += f"<div class='user'>{user['name']}</div>"
+@get("/items/from/<number>")
+def _(number):
+    next_number = int(number) + 4
+    html = """
+    <template
+        data-xTarget = "#items"           
+        data-xPosition = "beforeend"    
+    >
+    """
+    for i in range(int(number), next_number):
+       item = {"id": i}
+       html += template("_item.html", item=item)     
     html += "</template>"
-    html += "<template class='x' data-xTarget='#test'><div id='test'>WOW</div></template>"      
-    html += "<template class='x' data-xTarget='#ok'><div id='ok'>User created</div></template>"      
+    html += f"""
+    <template
+        data-xTarget = "#btn_show_more"           
+        data-xPosition = "replace"    
+    >"""
+    
+    html += template("__btn_show_more.html", id=next_number)
+
+    html += "</template>"
     return html
 
 
